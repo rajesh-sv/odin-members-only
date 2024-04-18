@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Title: <%= message.title %></p>
+    <p>Description: <%= message.description %></p>
+    <p>Posted: <%= message.postedDateFormatted %></p>
+    <p>Author: <%= message.user.name %></p>
+    <p>Username: <%= message.user.username %></p>
+    <form method="POST">
+      <fieldset>
+        <button>Delete</button>
+      </fieldset>
+    </form>
+  </body>
+</html>

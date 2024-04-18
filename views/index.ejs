@@ -2,10 +2,37 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% if (user) { %> 
+      <button><a href="/message">Create Message Post</a></button>
+      <% if (user.role === 'consumer') { %>
+        <button><a href="/upgraderole/member">Become a member!</a></button>
+      <% } else if (user.role === 'poweruser') { %>
+        <button><a href="/upgraderole/admin">Become Admin!</a></button>
+      <% } %>
+      <button><a href="/logout">Logout!</a></button>
+    <% } else { %>
+      <button><a href="/login">Login</a></button>
+      <button><a href="/signup">Sign Up</a></button>
+    <% } %>
+    <ul>
+      <% messages.forEach((message) => { %>
+        <li style="border: 1px solid black; border-radius: 3px;">
+          <p>Title: <%= message.title %></p>
+          <p>Description: <%= message.description %></p>
+          <p>Posted: <%= message.postedDateFormatted %></p>
+          <% if (user && (user.role === 'poweruser' || user.role === 'admin')) { %>
+            <p>Author: <%= message.user.name %></p>
+            <p>Username: <%= message.user.username %></p>
+          <% } %>
+          <% if (user && user.role === 'admin') { %>
+            <button><a href=<%= `delete/message/${message._id}` %>>Delete</a></button>
+          <% } %>
+        </li>
+      <% }); %>
+    </ul>
   </body>
 </html>

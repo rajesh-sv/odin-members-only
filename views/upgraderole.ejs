@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form method="POST">
+      <fieldset>
+        <div>
+          <label for="roleupgrade">Enter secret key to become <%= (role === 'member')? 'a poweruser': 'an admin'%>: </label>
+          <input type="password" id="roleupgrade" name="secretkey" required>
+        </div>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+    <% if (errors) { %>
+      <ul>
+      <% errors.forEach((error) => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+      </ul>
+    <% } %>
+  </body>
+</html>

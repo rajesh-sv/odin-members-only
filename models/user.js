@@ -2,8 +2,8 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-  first_name: { type: String, required: true, maxLength: 100 },
-  last_name: { type: String, required: true, maxLength: 100 },
+  firstName: { type: String, required: true, maxLength: 100 },
+  lastName: { type: String, required: true, maxLength: 100 },
   username: { type: String, required: true, maxLength: 100 },
   password: { type: String, required: true },
   role: {
@@ -15,7 +15,7 @@ const UserSchema = new Schema({
 })
 
 UserSchema.virtual("name").get(function () {
-  return this.first_name + " " + this.last_name
+  return this.firstName + " " + this.lastName
 })
 
 module.exports = mongoose.model("user", UserSchema)

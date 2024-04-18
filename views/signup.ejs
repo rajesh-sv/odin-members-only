@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form method="POST">
+      <fieldset>
+        <div>
+            <label for="firstName">First Name: </label>
+            <input type="text" id="firstName" name="firstName" required/>
+        </div>
+        <div>
+            <label for="lastName">Last Name: </label>
+            <input type="text" id="lastName" name="lastName" required/>
+        </div>
+        <div>
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" required/>
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="confirmPassword">Confirm Password: </label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+    <% if (errors) { %>
+      <ul>
+      <% errors.forEach((error) => { %>
+        <li><%= error.msg %></li>
+      <% }); %>
+      </ul>
+    <% } %>
+  </body>
+</html>

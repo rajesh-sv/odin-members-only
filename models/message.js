@@ -3,13 +3,13 @@ const Schema = mongoose.Schema
 
 const MessageSchema = new Schema({
   title: { type: String, required: true, minLength: 1 },
-  body: { type: String, required: true, minLength: 1 },
-  user: { type: Schema.Types.ObjectId, required: true },
-  posted_date: { type: Date },
+  description: { type: String, required: true, minLength: 1 },
+  user: { type: Schema.Types.ObjectId, required: true, ref: "user" },
+  postedDate: { type: Date },
 })
 
-MessageSchema.virtual("posted_date_formatted").get(function () {
-  return this.posted_date.toLocaleString()
+MessageSchema.virtual("postedDateFormatted").get(function () {
+  return this.postedDate.toLocaleString()
 })
 
 module.exports = mongoose.model("message", MessageSchema)

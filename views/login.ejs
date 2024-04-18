@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form method="POST">
+      <fieldset>
+        <div>
+          <label for="username">Username: </label>
+          <input type="text" id="username" name="username" required/>
+        </div>
+        <div>
+          <label for="password">Password: </label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+  </body>
+</html>
